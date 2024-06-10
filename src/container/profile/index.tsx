@@ -1,10 +1,12 @@
-import { Text, View } from "react-native";
-
+import {Text, View} from 'react-native';
 function ProfileScreen() {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={styles.container}>
         <Text>Profile Screen</Text>
-      </View>
+    </View>
     );
   }
-  export default ProfileScreen
+const styles = {
+  container: {flex: 1, alignItems: 'center', justifyContent: 'center'},
+};
+export default ProfileScreen;
