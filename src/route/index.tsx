@@ -9,7 +9,7 @@ const RootStack = createNativeStackNavigator();
 const Routes = () => {
   return (
     <NavigationContainer>
-      <RootStack.Navigator>
+      <RootStack.Navigator screenOptions={{headerShown: false}}>
         <RootStack.Screen
           name="Login"
           component={LoginScreen}
