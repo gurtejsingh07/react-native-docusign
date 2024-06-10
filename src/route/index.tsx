@@ -17,8 +17,7 @@ const Routes = () => {
         />
         <RootStack.Screen name="MyDrawer" component={MyDrawer} />
       </RootStack.Navigator>
-     
     </NavigationContainer>
   );
 };
-export default Routes
+export default Routes;
