@@ -22,7 +22,8 @@ module.exports = {
           '@routes': './src/routes',
           '@utils': './src/utils',
           '@assets':'./src/assets',
-          '@config':'./src/config'
+          '@config':'./src/config',
+          '@store':'./src/store'
           // Add more aliases as needed
         },
       },
