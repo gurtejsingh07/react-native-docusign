@@ -1,7 +1,8 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import Tabs from './tabber';
-import ProfileScreen from '../container/profile';
-import CounterScreen from '../container/counter';
+import ProfileScreen from '@containers/profile';
+import CounterScreen from '@containers/counter';
+import Tabs from '@routes/tabber';
+
 
 const Drawer = createDrawerNavigator();
 

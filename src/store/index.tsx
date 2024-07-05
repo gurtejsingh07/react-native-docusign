@@ -11,7 +11,8 @@ import {
   REGISTER,
 } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {rootReducer} from './rootReducer';
+import { rootReducer } from '@store/rootReducer';
+
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,

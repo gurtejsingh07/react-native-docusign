@@ -4,8 +4,9 @@ import 'react-native-gesture-handler';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
-import Routes from './src/route';
-import {persistor, store} from './src/store';
+
+import Routes from '@routes/index';
+import { persistor, store } from '@store/index';
 function App() {
   return (
     <Provider store={store}>
