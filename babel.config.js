@@ -23,7 +23,8 @@ module.exports = {
           '@utils': './src/utils',
           '@assets':'./src/assets',
           '@config':'./src/config',
-          '@store':'./src/store'
+          '@store':'./src/store',
+          '@constants':'./src/constants'
           // Add more aliases as needed
         },
       },
