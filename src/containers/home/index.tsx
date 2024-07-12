@@ -1,8 +1,7 @@
-import {Button, Text, View,StyleSheet} from 'react-native';
+import {Button, Text, View, StyleSheet} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 import {useEffect} from 'react';
 function HomeScreen({navigation}: any) {
-
   const theme = useTheme();
   const styles = createStyles(theme);
 
@@ -19,16 +18,17 @@ function HomeScreen({navigation}: any) {
     </View>
   );
 }
-const createStyles=(theme:any)=>StyleSheet.create({
-  container: {
-    flex: 1, 
-    alignItems: 'center', 
-    justifyContent: 'center',
-   // backgroundColor:theme.colors.background
-  },
-  text:{
-    color:theme.colors.text
-  }
-});
+const createStyles = (theme: any) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      // backgroundColor:theme.colors.background
+    },
+    text: {
+      color: theme.colors.text,
+    },
+  });
 
 export default HomeScreen;

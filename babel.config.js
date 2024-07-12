@@ -21,10 +21,10 @@ module.exports = {
           '@containers': './src/containers',
           '@routes': './src/routes',
           '@utils': './src/utils',
-          '@assets':'./src/assets',
-          '@config':'./src/config',
-          '@store':'./src/store',
-          '@constants':'./src/constants'
+          '@assets': './src/assets',
+          '@config': './src/config',
+          '@store': './src/store',
+          '@constants': './src/constants',
           // Add more aliases as needed
         },
       },

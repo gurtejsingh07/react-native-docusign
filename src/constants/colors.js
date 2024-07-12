@@ -4,7 +4,6 @@ color constants
 'use strict';
 
 let Colors = {
-
   green: '#7AB800', // switches, toggle, radio, border // used green bar, border green, charging
   red: '#e64c46',
   orange: '#F7923E',
