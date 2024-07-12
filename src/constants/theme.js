@@ -1,5 +1,5 @@
 // themes.js
-import Colors from './Colors';
+import Colors from '@constants/colors';
 export const LightTheme = {
   dark: false,
   colors: {

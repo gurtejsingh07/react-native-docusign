@@ -10,7 +10,7 @@ import LoginScreen from '@containers/login';
 const RootStack = createNativeStackNavigator();
 const Routes = () => {
   const colorScheme = Appearance.getColorScheme();
-  const theme = colorScheme == 'dark' ? DarkTheme : LightTheme;
+  const theme = colorScheme === 'dark' ? DarkTheme : LightTheme;
   return (
     <NavigationContainer theme={theme}>
       <RootStack.Navigator screenOptions={{headerShown: false}}>

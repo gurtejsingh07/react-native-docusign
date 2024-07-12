@@ -1,13 +1,18 @@
+import React from 'react';
 import {Button, Text, View, StyleSheet} from 'react-native';
-import {useTheme} from '@react-navigation/native';
-import {useEffect} from 'react';
-function HomeScreen({navigation}: any) {
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {useTheme, Theme} from '@react-navigation/native';
+import {RootStackParamList} from '@constants/types';
+type HomeScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'HomeScreen'
+>;
+interface Props {
+  navigation: HomeScreenNavigationProp;
+}
+const HomeScreen: React.FC<Props> = ({navigation}) => {
   const theme = useTheme();
   const styles = createStyles(theme);
-
-  useEffect(() => {
-    console.log('theme=======>', theme);
-  }, []);
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Home Screen</Text>
@@ -17,18 +22,18 @@ function HomeScreen({navigation}: any) {
       />
     </View>
   );
-}
-const createStyles = (theme: any) =>
-  StyleSheet.create({
+};
+const createStyles = (theme: Theme) => {
+  return StyleSheet.create({
     container: {
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      // backgroundColor:theme.colors.background
     },
     text: {
       color: theme.colors.text,
     },
   });
+};
 
 export default HomeScreen;

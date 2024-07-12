@@ -1,3 +1,4 @@
+import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import ProfileScreen from '@containers/profile';
 import CounterScreen from '@containers/counter';

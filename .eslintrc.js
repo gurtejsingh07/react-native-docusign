@@ -6,19 +6,18 @@ module.exports = {
     'airbnb/hooks',
     'plugin:sonarjs/recommended',
     'prettier',
-    '@react-native'
+    '@react-native',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true
+      jsx: true,
     },
     ecmaVersion: 2018,
     sourceType: 'module',
-    project: './tsconfig.json'
   },
   globals: {
-    Promise: false
+    Promise: false,
   },
   plugins: [
     'react',
@@ -26,7 +25,7 @@ module.exports = {
     'sonarjs',
     'jest',
     '@typescript-eslint',
-    'prettier'
+    'prettier',
   ],
   rules: {
     //general rules
@@ -36,6 +35,7 @@ module.exports = {
     'no-unused-vars': 2,
     'react/no-unescaped-entities': 2,
     'prettier/prettier': 2,
+    '@typescript-eslint/no-var-requires': 'off',
     //sonarqube rules setup
     'sonarjs/cognitive-complexity': 2,
     'sonarjs/no-identical-expressions': 2,
@@ -60,7 +60,7 @@ module.exports = {
     //react-hooks
     'react-hooks/exhaustive-deps': 2,
     //react native
-    'react-native/no-unused-styles': 2,
+    'react-native/no-unused-styles': 1,
     'react-native/split-platform-components': 2,
     'react-native/no-inline-styles': 2,
     'react-native/no-color-literals': 2,
@@ -69,7 +69,15 @@ module.exports = {
   },
   settings: {
     react: {
-      version: 'detect'
-    }
-  }
+      version: 'detect',
+    },
+  },
+  overrides: [
+    {
+      files: ['preinstall.js'], // Add the path to your specific file or files
+      rules: {
+        'no-console': 'off',
+      },
+    },
+  ],
 };
