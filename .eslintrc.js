@@ -66,6 +66,26 @@ module.exports = {
     'react-native/no-color-literals': 2,
     'react-native/no-raw-text': 2,
     'no-async-promise-executor': 2,
+    //variable names
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        selector: 'import',
+        format: ['camelCase', 'PascalCase'],
+      },
+
+      {
+        selector: ['variable', 'function'],
+        format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
+        leadingUnderscore: 'allow',
+        trailingUnderscore: 'allow',
+      },
+
+      {
+        selector: 'typeLike',
+        format: ['PascalCase'],
+      },
+    ],
   },
   settings: {
     react: {
