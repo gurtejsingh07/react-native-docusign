@@ -5,8 +5,8 @@
 
 'use-strict';
 const Fonts = {
-  bold: { fontFamily: 'Rubik-Bold' },
-  medium: { fontFamily: 'Rubik-Medium' },
-  regular: { fontFamily: 'Rubik-Regular' },
+  bold: {fontFamily: 'Rubik-Bold'},
+  medium: {fontFamily: 'Rubik-Medium'},
+  regular: {fontFamily: 'Rubik-Regular'},
 };
 module.exports = Fonts;
