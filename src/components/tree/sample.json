@@ -1,0 +1,148 @@
+[
+    {
+      "id": "1",
+      "name": "Rethinam",
+      "spouse": "2",
+      "dob": "03/03/1925",
+      "dod": null,
+      "profile": "https://images.unsplash.com/photo-1520206444322-d2df0dd4e78e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
+      "children": ["3"]
+    },
+    {
+      "id": "2",
+      "name": "Pitchaiammal",
+      "spouse": "1",
+      "dob": "05/05/1927",
+      "dod": null,
+      "profile": "https://images.unsplash.com/photo-1520206444322-d2df0dd4e78e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
+      "children": ["3"]
+    },
+    {
+      "id": "3",
+      "name": "AmalRaj",
+      "spouse": "4",
+      "dob": "03/03/1950",
+      "dod": null,
+      "profile": "https://images.unsplash.com/photo-1520206444322-d2df0dd4e78e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
+      "children": ["5", "6"]
+    },
+    {
+      "id": "4",
+      "name": "Jothi",
+      "spouse": "3",
+      "dob": "03/03/1952",
+      "dod": null,
+      "profile": "https://images.unsplash.com/photo-1520206444322-d2df0dd4e78e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
+      "children": ["5", "6"],
+      "parents": ["7", "8"],
+      "siblings": ["9", "10"]
+    },
+    {
+      "id": "5",
+      "name": "Layola",
+      "spouse": null,
+      "dob": "03/03/1975",
+      "dod": null,
+      "profile": "https://images.unsplash.com/photo-1520206444322-d2df0dd4e78e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+    },
+    {
+      "id": "6",
+      "name": "Rani",
+      "spouse": "11",
+      "dob": "03/03/1978",
+      "dod": null,
+      "profile": "https://images.unsplash.com/photo-1520206444322-d2df0dd4e78e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
+      "children": ["12"]
+    },
+    {
+      "id": "7",
+      "name": "Father of Jothi",
+      "spouse": "8",
+      "dob": "03/03/1930",
+      "dod": null,
+      "profile": "https://images.unsplash.com/photo-1520206444322-d2df0dd4e78e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
+      "children": ["4", "9", "10"]
+    },
+    {
+      "id": "8",
+      "name": "Mother of Jothi",
+      "spouse": "7",
+      "dob": "05/05/1932",
+      "dod": null,
+      "profile": "https://images.unsplash.com/photo-1520206444322-d2df0dd4e78e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
+      "children": ["4", "9", "10"]
+    },
+    {
+      "id": "9",
+      "name": "Sibling1",
+      "spouse": "13",
+      "dob": "03/03/1955",
+      "dod": null,
+      "profile": "https://images.unsplash.com/photo-1520206444322-d2df0dd4e78e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
+      "children": []
+    },
+    {
+      "id": "10",
+      "name": "Sibling2",
+      "spouse": "14",
+      "dob": "03/03/1960",
+      "dod": null,
+      "profile": "https://images.unsplash.com/photo-1520206444322-d2df0dd4e78e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
+      "children": []
+    },
+    {
+      "id": "11",
+      "name": "John",
+      "spouse": "6",
+      "dob": "03/03/1970",
+      "dod": null,
+      "profile": "https://images.unsplash.com/photo-1520206444322-d2df0dd4e78e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
+      "children": ["12"],
+      "parents": ["15", "16"]
+    },
+    {
+      "id": "12",
+      "name": "David",
+      "spouse": null,
+      "dob": "03/03/2000",
+      "dod": null,
+      "profile": "https://images.unsplash.com/photo-1520206444322-d2df0dd4e78e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
+    },
+    {
+      "id": "13",
+      "name": "Spouse1",
+      "spouse": "9",
+      "dob": "03/03/1956",
+      "dod": null,
+      "profile": "https://images.unsplash.com/photo-1520206444322-d2df0dd4e78e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
+      "children": []
+    },
+    {
+      "id": "14",
+      "name": "Spouse2",
+      "spouse": "10",
+      "dob": "03/03/1962",
+      "dod": null,
+      "profile": "https://images.unsplash.com/photo-1520206444322-d2df0dd4e78e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
+      "children": []
+    },
+    {
+      "id": "15",
+      "name": "Father of John",
+      "spouse": "16",
+      "dob": "03/03/1932",
+      "dod": null,
+      "profile": "https://images.unsplash.com/photo-1520206444322-d2df0dd4e78e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
+      "children": ["11"]
+    },
+    {
+      "id": "16",
+      "name": "Mother of John",
+      "spouse": "15",
+      "dob": "05/05/1934",
+      "dod": null,
+      "profile": "https://images.unsplash.com/photo-1520206444322-d2df0dd4e78e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80",
+      "children": ["11"]
+    }
+  ]
+  

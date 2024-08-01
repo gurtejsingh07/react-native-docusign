@@ -1,9 +1,10 @@
+import FamilyTree from '@components/tree/tree';
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 function ProfileScreen() {
   return (
     <View style={styles.container}>
-      <Text>Profile Screen</Text>
+      <FamilyTree/>
     </View>
   );
 }
