@@ -1,165 +1,156 @@
-import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import Svg, { Line } from 'react-native-svg';
+import React from 'react';
+import {View, Text, Image, TouchableOpacity,ScrollView} from 'react-native';
+import Svg, {Line} from 'react-native-svg';
+import PropTypes from 'prop-types';
+const FamilyTreeNode = ({member, treeData, onPersonClick, level, styles}) => {
+  const hasChildren = member.children && member.children.length > 0;
+  const hasParents = member.parents && member.parents.length > 0;
+  const hasSiblings = member.siblings && member.siblings.length > 0;
+  const hasSpouse = member?.spouse;
+  const children = hasChildren
+    ? member.children.map(childId => treeData[childId])
+    : [];
+  const parents = hasParents
+    ? member.parents.map(parentId => treeData[parentId])
+    : [];
+  const siblings = hasSiblings
+    ? member.siblings.map(siblingId => treeData[siblingId])
+    : [];
+  const spouse = hasSpouse ? treeData[member.spouse] : {};
+  console.log('spousespousespousespousespousespousespouse', spouse);
+  return (
+    <ScrollView>
+    <View style={{alignItems: 'center'}}>
+      <View style={{flexDirection: 'row',alignItems:'center'}}>
+        <TouchableOpacity
+          onPress={() => onPersonClick(member.id)}
+          style={[styles.nodeStyle]}>
+          <Image style={styles.imageStyle} source={{uri: member.profile}} />
+          <Text style={[styles.nodeTitleStyle, {color: styles.nodeTitleColor}]}>
+            {member.name}
+          </Text>
+        </TouchableOpacity>
+      
+        {hasSpouse && (
+          <View style={{flexDirection: 'row'}}>
+            <View style={{top: 20,position:'absolute',marginLeft:-25}}>
+              <Svg height="50" width="50">
+                <Line
+                  x1="0"
+                  y1="50%"
+                  x2="150"
+                  y2="50%"
+                  stroke={styles.pathColor}
+                  strokeWidth={styles.strokeWidth}
+                />
+              </Svg>
+              <View style={{top: -25}}>
+                <Svg height="50" width="50">
+                  <Line
+                    x1="50%"
+                    y1="0"
+                    x2="50%"
+                    y2="150"
+                    stroke={styles.pathColor}
+                    strokeWidth={styles.strokeWidth}
+                  />
+                </Svg>
+              </View>
+            </View>
 
-// Import the JSON data
-const familyData = require('@components/tree/sample.json');
+            <TouchableOpacity
+              onPress={() => onPersonClick(spouse.id)}
+              style={[styles.nodeStyle]}>
+              <Image style={styles.imageStyle} source={{uri: spouse.profile}} />
+              <Text
+                style={[styles.nodeTitleStyle, {color: styles.nodeTitleColor}]}>
+                {spouse.name}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )}
+      </View>
 
-class FamilyTree extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            treeData: this.buildTreeData(familyData),
-            selectedPersonId: null,
-        };
-    }
-
-    buildTreeData(data) {
-        let treeData = {};
-        data.forEach(member => {
-            treeData[member.id] = { ...member, children: member.children || [] };
-        });
-        return treeData;
-    }
-
-    getMemberById(id) {
-        return this.state.treeData[id];
-    }
-
-    handlePersonClick(id) {
-        this.setState({ selectedPersonId: id });
-    }
-    renderTree(nodeId) {
-        const member = this.getMemberById(nodeId);
-        if (!member) return null;
-    
-        const parents = familyData.filter(person => (person.children || []).includes(nodeId));
-        const siblings = parents.length > 0 ? (parents[0].children || []).filter(siblingId => siblingId !== nodeId) : [];
-        const spouse = member.spouse ? this.getMemberById(member.spouse) : null;
-        const children = member.children || [];
-    
-        return (
-            <View style={{ flexDirection: 'column', alignItems: 'center', marginBottom: 20 }}>
-                {/* Display Parents */}
-                {parents.length > 0 && (
-                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                        {parents.map(parent => (
-                            <View key={parent.id} style={[styles.nodeStyle, styles.parentStyle]}>
-                                <Image style={styles.imageStyle} source={{ uri: parent.profile }} />
-                                <Text style={styles.nodeTitleStyle}>{parent.name}</Text>
-                            </View>
-                        ))}
-                    </View>
-                )}
-                {parents.length > 0 && (
-                    <Svg height="20" width="2" style={{ alignSelf: 'center' }}>
-                        <Line x1="1" y1="0" x2="1" y2="20" stroke="black" strokeWidth="2" />
-                    </Svg>
-                )}
-    
-                {/* Display Spouse and Member */}
-                <View style={{ flexDirection: 'column', alignItems: 'center' }}>
-                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                        <TouchableOpacity onPress={() => this.handlePersonClick(member.id)} style={styles.nodeStyle}>
-                            <Image style={styles.imageStyle} source={{ uri: member.profile }} />
-                            <Text style={styles.nodeTitleStyle}>{member.name}</Text>
-                        </TouchableOpacity>
-                        {spouse && (
-                            <>
-                                <Svg height="2" width="20" style={{ marginHorizontal: 10 }}>
-                                    <Line x1="0" y1="1" x2="20" y2="1" stroke="black" strokeWidth="2" />
-                                </Svg>
-                                <TouchableOpacity onPress={() => this.handlePersonClick(spouse.id)} style={[styles.nodeStyle, styles.spouseStyle]}>
-                                    <Image style={styles.imageStyle} source={{ uri: spouse.profile }} />
-                                    <Text style={styles.nodeTitleStyle}>{spouse.name}</Text>
-                                </TouchableOpacity>
-                            </>
-                        )}
-                    </View>
-                    {this.hasChildren(member) && (
-                        <>
-                            <Svg height="20" width="2" style={{ marginTop: 10 }}>
-                                <Line x1="1" y1="0" x2="1" y2="20" stroke="black" strokeWidth="2" />
-                            </Svg>
-                            <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10 }}>
-                                {children.map((childId, index) => (
-                                    <View key={childId} style={{ flexDirection: 'column', alignItems: 'center', marginHorizontal: 10 }}>
-                                        {index > 0 && (
-                                            <Svg height="2" width="20">
-                                                <Line x1="0" y1="1" x2="20" y2="1" stroke="black" strokeWidth="2" />
-                                            </Svg>
-                                        )}
-                                        <TouchableOpacity onPress={() => this.handlePersonClick(childId)} style={styles.nodeStyle}>
-                                            <Image style={styles.imageStyle} source={{ uri: this.getMemberById(childId).profile }} />
-                                            <Text style={styles.nodeTitleStyle}>{this.getMemberById(childId).name}</Text>
-                                        </TouchableOpacity>
-                                    </View>
-                                ))}
-                            </View>
-                        </>
+      {hasChildren && (
+        <>
+        <View style={{top:-5}}>
+        <Svg height="50" width="20">
+            <Line
+              x1="50%"
+              y1="0"
+              x2="50%"
+              y2="150"
+              stroke={styles.pathColor}
+              strokeWidth={styles.strokeWidth}
+            />
+          </Svg>
+        </View>
+      
+          <View style={{flexDirection: 'row'}}>
+            {children.map((child, index) => (
+              <View
+                key={child.id}
+                style={{
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  marginHorizontal: styles.familyGap,
+                  top:-5
+                }}>
+                {children.length > 1 && (
+                  <Svg height="50" width="100%">
+                    <Line
+                      x1="50%"
+                      y1="0"
+                      x2="50%"
+                      y2="100%"
+                      stroke={styles.pathColor}
+                      strokeWidth={styles.strokeWidth}
+                    />
+                    {index > 0 && (
+                      <Line
+                        x1="0"
+                        y1="0"
+                        x2="50%"
+                        y2="0"
+                        stroke={styles.pathColor}
+                        strokeWidth={styles.strokeWidth}
+                      />
                     )}
-                </View>
-    
-                {/* Display Siblings */}
-                {siblings.length > 0 && (
-                    <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 20 }}>
-                        <Text style={[styles.nodeTitleStyle, { marginRight: 10 }]}>Siblings:</Text>
-                        <View style={{ flexDirection: 'row', marginTop: 10 }}>
-                            {siblings.map(siblingId => (
-                                <TouchableOpacity key={siblingId} onPress={() => this.handlePersonClick(siblingId)} style={[styles.nodeStyle, styles.siblingStyle]}>
-                                    <Image style={styles.imageStyle} source={{ uri: this.getMemberById(siblingId).profile }} />
-                                    <Text style={styles.nodeTitleStyle}>{this.getMemberById(siblingId).name}</Text>
-                                </TouchableOpacity>
-                            ))}
-                        </View>
-                    </View>
+                    {index < children.length - 1 && (
+                      <Line
+                        x1="50%"
+                        y1="0"
+                        x2="100%"
+                        y2="0"
+                        stroke={styles.pathColor}
+                        strokeWidth={styles.strokeWidth}
+                      />
+                    )}
+                  </Svg>
                 )}
-            </View>
-        );
-    }
-    
-    
-    hasChildren(member) {
-        return member.children && member.children.length > 0;
-    }
+                <FamilyTreeNode
+                  member={child}
+                  treeData={treeData}
+                  onPersonClick={onPersonClick}
+                  level={level + 1}
+                  styles={styles}
+                />
+              </View>
+            ))}
+          </View>
+        </>
+      )}
+    </View>
+    </ScrollView>
+  );
+};
 
-    render() {
-        const { selectedPersonId } = this.state;
-        return (
-            <View style={{ flexDirection: 'column', alignItems: 'center', padding: 20 }}>
-                {selectedPersonId
-                    ? this.renderTree(selectedPersonId)
-                    : familyData.map(member => (
-                        <TouchableOpacity key={member.id} onPress={() => this.handlePersonClick(member.id)} style={styles.nodeStyle}>
-                            <Image style={styles.imageStyle} source={{ uri: member.profile }} />
-                            <Text style={styles.nodeTitleStyle}>{member.name}</Text>
-                        </TouchableOpacity>
-                    ))}
-            </View>
-        );
-    }
-}
+FamilyTreeNode.propTypes = {
+  member: PropTypes.object.isRequired,
+  treeData: PropTypes.object.isRequired,
+  onPersonClick: PropTypes.func.isRequired,
+  level: PropTypes.number.isRequired,
+  styles: PropTypes.object.isRequired,
+};
 
-const styles = StyleSheet.create({
-    nodeStyle: {
-        flexDirection: 'column',
-        alignItems: 'center',
-        padding: 10,
-        margin: 10,
-        borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 5
-    },
-    imageStyle: {
-        width: 50,
-        height: 50,
-        borderRadius: 25
-    },
-    nodeTitleStyle: {
-        marginTop: 5,
-        fontSize: 16,
-        fontWeight: 'bold'
-    }
-});
-
-export default FamilyTree;
+export default FamilyTreeNode;
